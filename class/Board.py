@@ -39,22 +39,53 @@ class Board(object):
             return response
 
     def populate_board(self):
-        response = requests.get(self.start__square_api_ref)
-        data_response = response.json()
-        print(data_response)
-        number = data_response['number']
-        pos_x = data_response['posX']
-        pos_y = data_response['posY']
-        name = data_response['name']
-        links = data_response['links']
+        response = requests.get(self.start__square_api_ref).json()
+        first_square = self.serialize_json_square(response)
+        self.squares.append(first_square)
+        self.get_next_square(first_square)
+
+    def get_next_square(self, square):
+        while square.number < self.goal_square:
+            print("next square")
+            next_square_ref = ""
+            for links in square.links:
+                if links['direction'] == 'next':
+                    next_square_ref = links['url']
+            response = requests.get(next_square_ref).json()
+            next_square = self.serialize_json_square(response)
+            if next_square.number > 68:
+                break
+            print("Get next square: ", next_square.number)
+            self.squares.append(next_square)
+            self.get_next_square(next_square)
+        print("Reached the end")
+
+    def serialize_json_square(self, response):
+        number = response['number']
+        pos_x = response['posX']
+        pos_y = response['posY']
+        name = response['name']
+        links = response['links']
         try:
-            wormhole = data_response['wormhole']
-            wormhole_url = data_response['wormhole_url']
+            wormhole = response['wormhole']
+            wormhole_url = response['wormhole_url']
             new_square = Square(number, pos_x, pos_y, name, links, wormhole, wormhole_url)
         except KeyError:
             new_square = Square(number, pos_x, pos_y, name, links)
 
-        self.squares.append(new_square)
+        return new_square
+
+    def check_last_square(self, square):
+        cont = False
+        for links in square.links:
+            if links['direction'] == 'next' and links['square'] <= self.goal_square:
+                cont = True
+            else:
+                cont = False
+        return cont
+
+
+
 
 
 
