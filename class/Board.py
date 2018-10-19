@@ -1,5 +1,7 @@
-import json
 import requests
+import sys
+from Square import Square
+import json
 
 
 class Board(object):
@@ -18,6 +20,7 @@ class Board(object):
             self.goal_square = int(data['goal'])
             self.api_ref = data['self']
             self.start__square_api_ref = data['startSquare']
+            self.squares = []
         print(self.dimX)
 
     @property
@@ -35,17 +38,26 @@ class Board(object):
         else:
             return response
 
-    def function(self, param):
-        """ Quick description
+    def populate_board(self):
+        response = requests.get(self.start__square_api_ref)
+        data_response = response.json()
+        print(data_response)
+        number = data_response['number']
+        pos_x = data_response['posX']
+        pos_y = data_response['posY']
+        name = data_response['name']
+        links = data_response['links']
+        try:
+            wormhole = data_response['wormhole']
+            wormhole_url = data_response['wormhole_url']
+            new_square = Square(number, pos_x, pos_y, name, links, wormhole, wormhole_url)
+        except KeyError:
+            new_square = Square(number, pos_x, pos_y, name, links)
 
-        In-depth description
-
-        Args:
-            Explain the arguments
-        
-        Returns:
-            Return type 
-        """
+        self.squares.append(new_square)
 
 
-board = Board()
+
+
+
+
