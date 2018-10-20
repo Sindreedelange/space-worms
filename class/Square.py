@@ -1,13 +1,14 @@
 class Square(object):
 
-    def __init__(self, number, pos_x, pos_y, name, links, wormhole=0, wormhole_url=""):
-        self.number = number
-        self.pos_x = pos_x
-        self.pos_y = pos_y
-        self.name = name
-        self.links = links
-        self.wormhole = wormhole
-        self.wormhole_url = wormhole_url
+    def __init__(self, response):
+        self.number = 0
+        self.pos_x = 0
+        self.pos_y = 0
+        self.name = ""
+        self.links = {}
+        self.wormhole = 0
+        self.wormhole_url = ""
+        self.serialize_json_square(response)
 
     def has_next(self):
         cont = False
@@ -17,3 +18,19 @@ class Square(object):
             else:
                 cont = False
         return cont
+
+    def serialize_json_square(self, response):
+        self.number = response['number']
+        self.pos_x = response['posX']
+        self.pos_y = response['posY']
+        self.name = response['name']
+        self.links = response['links']
+        print("Response: \n", response)
+        try:
+            print(response['wormhole_url'])
+            self.wormhole = response['wormhole']
+            self.wormhole_url = response['wormhole_url']
+        except KeyError:
+            print("No Wormhole - Continue")
+
+        return self
