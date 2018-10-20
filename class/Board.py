@@ -42,23 +42,24 @@ class Board(object):
         response = requests.get(self.start__square_api_ref).json()
         first_square = self.serialize_json_square(response)
         self.squares.append(first_square)
-        self.get_next_square(first_square)
+
+        self.traverse_board(first_square)
+
+    def traverse_board(self, first_square):
+        square = first_square
+        while square.number != 68:
+            square = self.get_next_square(square)
+            self.squares.append(square)
 
     def get_next_square(self, square):
-        while square.number < self.goal_square:
-            print("next square")
-            next_square_ref = ""
-            for links in square.links:
-                if links['direction'] == 'next':
-                    next_square_ref = links['url']
-            response = requests.get(next_square_ref).json()
-            next_square = self.serialize_json_square(response)
-            if next_square.number > 68:
-                break
-            print("Get next square: ", next_square.number)
-            self.squares.append(next_square)
-            self.get_next_square(next_square)
-        print("Reached the end")
+        next_square_ref = ""
+        for links in square.links:
+            if links['direction'] == 'next':
+                next_square_ref = links['url']
+
+        response = requests.get(next_square_ref).json()
+        next_square = self.serialize_json_square(response)
+        return next_square
 
     def serialize_json_square(self, response):
         number = response['number']
