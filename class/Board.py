@@ -40,7 +40,7 @@ class Board(object):
 
     def populate_board(self):
         response = requests.get(self.start__square_api_ref).json()
-        first_square = self.serialize_json_square(response)
+        first_square = Square(response)
         self.squares.append(first_square)
 
         self.traverse_board(first_square)
@@ -52,30 +52,16 @@ class Board(object):
             self.squares.append(current_square)
             print(current_square.number)
 
-    def get_next_square(self, square):
+    @staticmethod
+    def get_next_square(square):
         next_square_ref = ""
         for links in square.links:
             if links['direction'] == 'next':
                 next_square_ref = links['url']
 
         response = requests.get(next_square_ref).json()
-        next_square = self.serialize_json_square(response)
+        next_square = Square(response)
         return next_square
-
-    def serialize_json_square(self, response):
-        number = response['number']
-        pos_x = response['posX']
-        pos_y = response['posY']
-        name = response['name']
-        links = response['links']
-        try:
-            wormhole = response['wormhole']
-            wormhole_url = response['wormhole_url']
-            new_square = Square(number, pos_x, pos_y, name, links, wormhole, wormhole_url)
-        except KeyError:
-            new_square = Square(number, pos_x, pos_y, name, links)
-
-        return new_square
 
 
 
