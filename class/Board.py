@@ -46,10 +46,11 @@ class Board(object):
         self.traverse_board(first_square)
 
     def traverse_board(self, first_square):
-        square = first_square
-        while square.number != 68:
-            square = self.get_next_square(square)
-            self.squares.append(square)
+        current_square = first_square
+        while current_square.has_next():
+            current_square = self.get_next_square(current_square)
+            self.squares.append(current_square)
+            print(current_square.number)
 
     def get_next_square(self, square):
         next_square_ref = ""
@@ -75,15 +76,6 @@ class Board(object):
             new_square = Square(number, pos_x, pos_y, name, links)
 
         return new_square
-
-    def check_last_square(self, square):
-        cont = False
-        for links in square.links:
-            if links['direction'] == 'next' and links['square'] <= self.goal_square:
-                cont = True
-            else:
-                cont = False
-        return cont
 
 
 

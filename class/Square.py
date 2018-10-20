@@ -9,3 +9,11 @@ class Square(object):
         self.wormhole = wormhole
         self.wormhole_url = wormhole_url
 
+    def has_next(self):
+        cont = False
+        for links in self.links:
+            if 'next' in links.values():
+                cont = True
+            else:
+                cont = False
+        return cont
