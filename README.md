@@ -8,3 +8,5 @@ Dependent on your package manager <br>
 - Find some way to serialize JSON objects to *.py* classes <br>
 --> Make my own `serialize_objects` class
 - Board/Square factory
+- Refactor `Board.py` so that it contains no logic
+- Implement (model) classes `Player` and `dice`
