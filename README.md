@@ -1,18 +1,21 @@
 # README
-Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using Python > 2.7.x
+Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using Python 3
 
-# Run
-To run the program either clone the repo: <br>
-`git clone https://github.com/Sindreedelange/space-worms.git`
-<br>
-or download as .zip. 
+# Building
 
-The program can be run from `src/SpaceWorms.py` <br>
+## Prerequisites
+1. Python 3
+2. Packet manager, such as **Conda** or **Pip**
 
-## Install dependencies
-To make API request:
-Dependent on your package manager <br>
-`conda install requests` / `pip install requests` <br>
+## Instructions
+1. Clone the repository <br>
+`git clone https://github.com/Sindreedelange/space-worms.git`, or download as .zip. 
+2. In order to make API requests, install *requests*
+  <br> Dependent on your package manager <br>
+  `conda install requests` / `pip install requests` <br>
+2. Open in editor, such as *PyCharm*
+3. Navigate to `src/SpaceWorms.py`
+4. Run the file
 
 ## TODO
 - Use TDD
@@ -21,3 +24,4 @@ Dependent on your package manager <br>
 - Board/Square factory
 - Refactor `Board.py` so that it contains no logic
 - Implement (model) classes `Player` and `Dice`
+- Define a *CHANGELOG.md* instead of this **TODO** list 
