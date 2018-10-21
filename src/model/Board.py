@@ -1,5 +1,5 @@
 import requests
-from Square import Square
+from .Square import Square
 
 
 class Board(object):
