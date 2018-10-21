@@ -7,3 +7,4 @@ Dependent on your package manager <br>
 - Use TDD
 - Find some way to serialize JSON objects to *.py* classes <br>
 --> Make my own `serialize_objects` class
+- Board/Square factory
