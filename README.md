@@ -5,4 +5,5 @@ Dependent on your package manager <br>
 
 ## TODO
 - Use TDD
-- Find some way to serialize JSON objects to *.py* classes 
+- Find some way to serialize JSON objects to *.py* classes <br>
+--> Make my own `serialize_objects` class
