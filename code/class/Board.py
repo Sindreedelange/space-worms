@@ -1,7 +1,5 @@
 import requests
-import sys
 from Square import Square
-import json
 
 
 class Board(object):
