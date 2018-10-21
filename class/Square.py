@@ -20,17 +20,14 @@ class Square(object):
         return cont
 
     def serialize_json_square(self, response):
+        print("Response: \n", response)
         self.number = response['number']
         self.pos_x = response['posX']
         self.pos_y = response['posY']
         self.name = response['name']
         self.links = response['links']
-        print("Response: \n", response)
-        try:
-            print(response['wormhole_url'])
+        if 'wormhole' in response:
             self.wormhole = response['wormhole']
+        if 'wormhole_url' in response:
             self.wormhole_url = response['wormhole_url']
-        except KeyError:
-            print("No Wormhole - Continue")
-
         return self
