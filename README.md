@@ -1,4 +1,4 @@
-# README
+# Space Worms
 Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using Python 3
 
 # Building
