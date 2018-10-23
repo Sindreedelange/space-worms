@@ -1,9 +1,13 @@
-from .model.Board import Board
+from src.controller.BoardController import BoardController
+from src.controller.BoardFactory import BoardFactory
 
 
 def main():
-    board = Board()
-    board.populate_board()
+    board_factory = BoardFactory()
+    board_controller = BoardController()
+
+    board = board_factory.get_board("2")
+    board_controller.populate_board(board)
     print("Populate board done")
     for square in board.squares:
         print("Main method: ", square.number)
