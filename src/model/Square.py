@@ -1,33 +1,12 @@
 class Square(object):
 
-    def __init__(self, response):
-        self.number = 0
-        self.pos_x = 0
-        self.pos_y = 0
-        self.name = ""
-        self.links = {}
-        self.wormhole = 0
-        self.wormhole_url = ""
-        self.serialize_json_square(response)
-
-    def has_next(self):
-        cont = False
-        for links in self.links:
-            if 'next' in links.values():
-                cont = True
-            else:
-                cont = False
-        return cont
-
-    def serialize_json_square(self, response):
-        print("Response: \n", response)
-        self.number = response['number']
-        self.pos_x = response['posX']
-        self.pos_y = response['posY']
-        self.name = response['name']
-        self.links = response['links']
-        if 'wormhole' in response:
-            self.wormhole = response['wormhole']
-        if 'wormhole_url' in response:
-            self.wormhole_url = response['wormhole_url']
-        return self
+    def __init__(self, data):
+        self.number = data['number']
+        self.pos_x = data['posX']
+        self.pos_y = data['posY']
+        self.name = data['name']
+        self.links = data['links']
+        if 'wormhole' in data:
+            self.wormhole = data['wormhole']
+        if 'wormhole_url' in data:
+            self.wormhole_url = data['wormhole_url']

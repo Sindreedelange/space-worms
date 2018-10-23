@@ -1,5 +1,6 @@
 import requests
 from src.model.Square import Square
+from .SquareController import SquareController
 
 
 class BoardController(object):
@@ -21,7 +22,7 @@ class BoardController(object):
 
     def traverse_board(self, board, first_square):
         current_square = first_square
-        while current_square.has_next():
+        while SquareController.has_next(current_square):
             current_square = self.get_next_square(current_square)
             if current_square is not None:
                 board.squares.append(current_square)
