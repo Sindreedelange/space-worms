@@ -1,4 +1,4 @@
-from model.Board import Board
+from .model.Board import Board
 
 
 def main():
