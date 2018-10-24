@@ -45,10 +45,8 @@ class GameService:
         return board
 
     def play(self):
-        winner = None
-        num_rounds = 0
         done = False
-        while not done and num_rounds < 20:
+        while not done:
             for player in self.game.players:
                 GameView.player_pre_roll(player)
 
@@ -56,22 +54,28 @@ class GameService:
 
                 if self.illegal_move(next_square):
                     GameView.out_of_bounds()
-                    continue
-                else:
-                    player.square = self.game.board.squares[next_square-1]
-                    if hasattr(player.square, 'wormhole'):
-                        self.wormhole(player)
-                    done = self.check_winner(player)
-                    if done:
-                        winner = player
-            print(GameView.players_standing(self.game.players))
-            num_rounds += 1
+                    next_square = self.make_illegal_move_legal(player, next_square)
+
+                player.square = self.game.board.squares[next_square-1]
+                if hasattr(player.square, 'wormhole'):
+                    self.wormhole(player)
+                done = self.check_winner(player)
+                if done:
+                    winner = player
+                    GameView.winner(winner)
+                    break
+            GameView.players_standing(self.game.players)
             sleep(1)
-        if winner is not None:
-            GameView.winner(winner)
-        else:
-            GameView.end_round()
         exit(0)
+
+    def make_illegal_move_legal(self, player, illegal_square):
+        """Explained in README file - when stepping out of bounds"""
+        print("Tried to access square ", illegal_square)
+        roll = illegal_square - player.square.number
+        distance_to_end = self.game.board.size - player.square.number
+        remaining = roll - distance_to_end
+        print("But ended up at ", self.game.board.size - remaining)
+        return self.game.board.size - remaining
 
     def illegal_move(self, next_square):
         return next_square > self.game.board.size
@@ -123,8 +127,8 @@ class GameService:
 
     @staticmethod
     def validate_input_number_of_players(user_choice):
-        if user_choice == 0:
-            GameView.zero_players()
+        if user_choice == 0 or user_choice == 1:
+            GameView.few_players()
             return -1
         elif user_choice > 4:
             GameView.too_many_players()

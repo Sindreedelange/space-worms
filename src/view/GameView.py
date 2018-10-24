@@ -3,8 +3,8 @@ class GameView:
     # Error messages
     # ---------------------------------------------------------------------
     @staticmethod
-    def zero_players():
-        print("Pretty sure you have to be > 0 players to play this game")
+    def few_players():
+        print("Pretty sure you have to be > 1 players to play this game")
 
     @staticmethod
     def invalid_initial_menu():

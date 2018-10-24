@@ -23,7 +23,6 @@ class BoardController:
             current_square = self.get_next_square(current_square)
             if current_square is not None:
                 board.squares.append(current_square)
-                print(current_square.number)
 
     @staticmethod
     def get_next_square(square):
