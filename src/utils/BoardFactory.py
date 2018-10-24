@@ -1,5 +1,5 @@
 import requests
-from src.model.Board import Board
+from model.Board import Board
 
 
 class BoardFactory:

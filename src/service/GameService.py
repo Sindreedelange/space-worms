@@ -1,7 +1,7 @@
-from src.view.GameView import GameView
-from src.utils.PlayerFactory import PlayerFactory
-from src.controller.PlayerController import PlayerController
-from src.model.Game import Game
+from view.GameView import GameView
+from utils.PlayerFactory import PlayerFactory
+from controller.PlayerController import PlayerController
+from model.Game import Game
 from time import sleep
 
 

@@ -1,5 +1,5 @@
 import requests
-from src.model.Square import Square
+from model.Square import Square
 from .SquareController import SquareController
 
 

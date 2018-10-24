@@ -1,4 +1,4 @@
-from src.model.Player import Player
+from model.Player import Player
 
 
 class PlayerFactory:

@@ -1,10 +1,6 @@
-import sys
-
-sys.path.append("./src")
-
-from src.controller.BoardController import BoardController
-from src.utils.BoardFactory import BoardFactory
-from src.service.GameService import GameService
+from controller.BoardController import BoardController
+from utils.BoardFactory import BoardFactory
+from service.GameService import GameService
 
 
 def main():

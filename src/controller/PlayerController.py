@@ -1,4 +1,4 @@
-from src.utils.Dice import Dice
+from utils.Dice import Dice
 
 
 class PlayerController:
