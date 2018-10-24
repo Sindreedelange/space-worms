@@ -17,6 +17,10 @@ Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using P
 3. Navigate to `src/SpaceWorms.py`
 4. Run the file
 
+## Game rules
+If a player rolls the dice so that they would end up outside of the board, they start 
+from the end of the board, with remaining eyes on the dice left to move.  
+
 ## TODO
 - Refactor logic in Square
     - SquareResponse w. to_square_model. Possibly relevant for Board as well
