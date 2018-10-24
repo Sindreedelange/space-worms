@@ -20,5 +20,5 @@ Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using P
 ## TODO
 - Refactor logic in Square
     - SquareResponse w. to_square_model. Possibly relevant for Board as well
-- Throw exception instead of returning 'None' of not able to find Board
+- Throw exception instead of returning 'None' if not able to find Board
 - Define a *CHANGELOG.md* instead of this **TODO** list 
