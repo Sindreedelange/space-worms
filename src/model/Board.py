@@ -11,10 +11,10 @@ class Board(object):
         self.size = data['size']
         self.dimX = int(data['dimX'])
         self.dimY = int(data['dimY'])
-        self.start_square = int(data['start'])
+        self.start_square_number = int(data['start'])
         self.goal_square = int(data['goal'])
         self.api_ref = data['self']
-        self.start__square_api_ref = data['startSquare']
+        self.start_square_api_ref = data['startSquare']
         self.squares = []
 
 

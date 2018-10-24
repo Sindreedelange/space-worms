@@ -9,7 +9,7 @@ class BoardController(object):
         pass
 
     def populate_board(self, board):
-        response = requests.get(board.start__square_api_ref)
+        response = requests.get(board.start_square_api_ref)
         if response.status_code != 200:
             print("Something wrong with API call \n Try again?")
             return None
