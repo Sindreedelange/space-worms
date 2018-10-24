@@ -1,5 +1,5 @@
 from src.controller.BoardController import BoardController
-from src.controller.BoardFactory import BoardFactory
+from src.utils.BoardFactory import BoardFactory
 
 
 def main():
