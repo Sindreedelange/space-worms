@@ -1,9 +1,6 @@
-import src.model.Square as Square
 
 
-class SquareController(object):
-    def __init__(self):
-        pass
+class SquareController:
 
     @staticmethod
     def has_next(square):

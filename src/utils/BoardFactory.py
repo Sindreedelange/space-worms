@@ -2,7 +2,7 @@ import requests
 from src.model.Board import Board
 
 
-class BoardFactory(object):
+class BoardFactory:
 
     def __init__(self, base_url="https://visningsrom.stacc.com/dd_server_worms/rest/boards/"):
         self.base_url = base_url

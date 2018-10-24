@@ -1,11 +1,7 @@
 import random
 
 
-class Dice(object):
-    """Potentially overkill, but increases readability"""
-
-    def __init__(self):
-        pass
+class Dice:
 
     @staticmethod
     def roll():

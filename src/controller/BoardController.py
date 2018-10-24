@@ -3,10 +3,7 @@ from src.model.Square import Square
 from .SquareController import SquareController
 
 
-class BoardController(object):
-
-    def __init__(self):
-        pass
+class BoardController:
 
     def populate_board(self, board):
         response = requests.get(board.start_square_api_ref)

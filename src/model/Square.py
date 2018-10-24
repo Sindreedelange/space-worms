@@ -1,4 +1,4 @@
-class Square(object):
+class Square:
 
     def __init__(self, data):
         self.number = data['number']

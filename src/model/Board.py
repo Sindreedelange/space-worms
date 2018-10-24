@@ -1,8 +1,4 @@
-import requests
-from .Square import Square
-
-
-class Board(object):
+class Board:
 
     def __init__(self, data):
         self.id = data['id']

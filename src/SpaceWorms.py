@@ -2,7 +2,6 @@ from src.controller.BoardController import BoardController
 from src.utils.BoardFactory import BoardFactory
 from src.utils.PlayerFactory import PlayerFactory
 from src.controller.PlayerController import PlayerController
-from src.model.Player import Player
 
 
 def main():
