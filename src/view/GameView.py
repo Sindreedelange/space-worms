@@ -21,6 +21,10 @@ class GameView:
     @staticmethod
     def not_a_valid_number():
         print("Please input a natural number")
+
+    @staticmethod
+    def out_of_bounds():
+        print("Almost stepped out of the board there")
     # ---------------------------------------------------------------------
 
     # Menus
@@ -77,3 +81,11 @@ class GameView:
     @staticmethod
     def ladder():
         print("Yaho (Super Mario 64-style) *Climbing noise*")
+
+    @staticmethod
+    def winner(player):
+        print("Congratz, player ", player.p_id, "\n Terminating")
+
+    @staticmethod
+    def end_round():
+        print("Sorry, round limit exceeded \n Terminating")

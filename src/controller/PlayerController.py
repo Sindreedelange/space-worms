@@ -5,7 +5,7 @@ class PlayerController:
 
     @staticmethod
     def player_roll(player):
-        print("Player ", player.p_id, " is at square: ", player.square.number)
         roll = Dice.roll()
         print("Rolled ", roll)
-        return roll
+        next_square = (roll + player.square.number)
+        return next_square

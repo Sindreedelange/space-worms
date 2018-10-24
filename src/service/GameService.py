@@ -2,6 +2,7 @@ from src.view.GameView import GameView
 from src.utils.PlayerFactory import PlayerFactory
 from src.controller.PlayerController import PlayerController
 from src.model.Game import Game
+from time import sleep
 
 
 class GameService:
@@ -44,23 +45,51 @@ class GameService:
         return board
 
     def play(self):
-        for player in self.game.players:
-            GameView.player_pre_roll(player)
-            to_square_number = PlayerController.player_roll(player)
-            player.square = self.game.board.squares[to_square_number]
-            print(player.square.name)
-            if hasattr(player.square, 'wormhole'):
-                GameView.wormhole_encounter(player)
-                wormhole_number = player.square.wormhole
-                if player.square.number > wormhole_number:
-                    GameView.snake()
+        winner = None
+        num_rounds = 0
+        done = False
+        while not done and num_rounds < 20:
+            for player in self.game.players:
+                GameView.player_pre_roll(player)
+
+                next_square = PlayerController.player_roll(player)
+
+                if self.illegal_move(next_square):
+                    GameView.out_of_bounds()
+                    continue
                 else:
-                    GameView.ladder()
-                print("You moved from ", player.square.number)
-                player.square = self.game.board.squares[wormhole_number - 1]
-                print("to ", player.square.number, " because of wormhole")
-                print("Player ", player.p_id, " is now at square: ", player.square.number)
-        print(GameView.players_standing(self.game.players))
+                    player.square = self.game.board.squares[next_square-1]
+                    if hasattr(player.square, 'wormhole'):
+                        self.wormhole(player)
+                    done = self.check_winner(player)
+                    if done:
+                        winner = player
+            print(GameView.players_standing(self.game.players))
+            num_rounds += 1
+            sleep(1)
+        if winner is not None:
+            GameView.winner(winner)
+        else:
+            GameView.end_round()
+        exit(0)
+
+    def illegal_move(self, next_square):
+        return next_square > self.game.board.size
+
+    def check_winner(self, player):
+        return player.square.number == self.game.board.goal_square
+
+    def wormhole(self, player):
+        GameView.wormhole_encounter(player)
+        wormhole_number = player.square.wormhole
+        if player.square.number > wormhole_number:
+            GameView.snake()
+        else:
+            GameView.ladder()
+        print("You moved from ", player.square.number)
+        player.square = self.game.board.squares[wormhole_number - 1]
+        print("to ", player.square.number, " because of wormhole")
+        print("Player ", player.p_id, " is now at square: ", player.square.number)
 
     # Get input
     # ---------------------------------------------------------------------

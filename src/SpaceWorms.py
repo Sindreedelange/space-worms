@@ -1,9 +1,6 @@
 from src.controller.BoardController import BoardController
 from src.utils.BoardFactory import BoardFactory
-from src.utils.PlayerFactory import PlayerFactory
-from src.controller.PlayerController import PlayerController
-from src.view.GameView import GameView
-from src.controller.GameService import GameService
+from src.service.GameService import GameService
 
 
 def main():

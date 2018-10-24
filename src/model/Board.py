@@ -4,7 +4,6 @@ class Board:
         self.id = data['id']
         self.name = data['name']
         self.description = data['description']
-        self.size = data['size']
         self.dimX = int(data['dimX'])
         self.dimY = int(data['dimY'])
         self.start_square_number = int(data['start'])
@@ -12,6 +11,7 @@ class Board:
         self.api_ref = data['self']
         self.start_square_api_ref = data['startSquare']
         self.squares = []
+        self.size = int(self.dimX * self.dimY)
 
 
 
