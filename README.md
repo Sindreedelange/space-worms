@@ -22,8 +22,9 @@ If a player rolls the dice so that they would end up outside of the board, they 
 from the end of the board, with remaining eyes on the dice left to move. 
 
 ## Known problems
-Because if problems with *import* it is not possible, or at least I have not been
-able to, run the program in terminal.  
+There have been a few problems with regards to importing modules. It should
+now work in terminal, but if using *PyCharm* add */src* to project interpreter
+path (https://stackoverflow.com/questions/48947494/add-directory-to-python-path-in-pycharm) 
 
 ## TODO
 - Refactor logic in Square
