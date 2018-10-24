@@ -1,15 +1,54 @@
 class GameView:
 
+    # Error messages
+    # ---------------------------------------------------------------------
+    @staticmethod
+    def zero_players():
+        print("Pretty sure you have to be > 0 players to play this game")
+
+    @staticmethod
+    def invalid_initial_menu():
+        print("Please input either 0 or 1")
+
+    @staticmethod
+    def too_many_players():
+        print("Too many players, please try again")
+
+    @staticmethod
+    def quit_game():
+        print("Bye Felicia")
+
+    @staticmethod
+    def not_a_valid_number():
+        print("Please input a natural number")
+    # ---------------------------------------------------------------------
+
+    # Menus
+    # ---------------------------------------------------------------------
     @staticmethod
     def initial_menu():
-        """"""
-        print("-----------------------")
-        print("Welcome to Space Worms")
-        print("-----------------------")
-        print("Menu")
-        print("Press 1 to play game")
-        print("Press 0 to exit game")
-        pass
+        return ("-----------------------\n"
+                "Welcome to Space Worms\n"
+                "-----------------------\n"
+                "_________MENU_________\n"
+                "Press 1 to play game\n"
+                "Press 0 to exit game\n")
+
+    @staticmethod
+    def game_menu():
+        return ("-----------------------\n"
+                "_______GAME MENU_______\n"
+                "-----------------------\n"
+                "Currently only 1 map available: Original\n"
+                "Please input number of players: \n"
+                "(Between 1 and 4) \n")
+    # ---------------------------------------------------------------------
+
+    # Player actions
+    # ---------------------------------------------------------------------
+    @staticmethod
+    def player_pre_roll(player):
+        print("It is player ", player.p_id, "'s turn")
 
     @staticmethod
     def players_standing(players):
@@ -28,3 +67,4 @@ class GameView:
             player.square = board.squares[wormhole_number-1]
             print("to ", player.square.number, " because of wormhole")
             print("Player ", player.p_id, " is now at square: ", player.square.number)
+    # ---------------------------------------------------------------------
