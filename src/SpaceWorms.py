@@ -20,6 +20,8 @@ def main():
         print("It is player ", player.p_id, "'s turn")
         to_square_number = PlayerController.player_roll(player)
         player.square = board.squares[to_square_number]
+        if hasattr(player.square, 'wormhole'):
+            print("Square ", player.square.number, " has a wormhole")
         print("Player ", player.p_id, " is at square: ", player.square.number)
 
 main()
