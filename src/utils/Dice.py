@@ -2,9 +2,11 @@ import random
 
 
 class Dice(object):
+    """Potentially overkill, but increases readability"""
 
     def __init__(self):
-        self.eyes = 0
+        pass
 
-    def dice_roll(self):
-        self.eyes = random.randint(1, 6)
+    @staticmethod
+    def dice_roll():
+        return random.randint(1, 6)
