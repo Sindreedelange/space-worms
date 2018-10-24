@@ -18,10 +18,6 @@ Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using P
 4. Run the file
 
 ## TODO
-- Use TDD
-- Find some way to serialize JSON objects to *.py* classes <br>
---> Make my own `serialize_objects` class
-- Board/Square factory
-- Refactor `Board.py` so that it contains no logic
-- Implement (model) classes `Player` and `Dice`
+- Refactor logic in Square
+    - SquareResponse w. to_square_model. Possibly relevant for Board as well
 - Define a *CHANGELOG.md* instead of this **TODO** list 
