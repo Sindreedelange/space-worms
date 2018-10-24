@@ -19,10 +19,18 @@ def main():
     for player in players:
         print("It is player ", player.p_id, "'s turn")
         to_square_number = PlayerController.player_roll(player)
-        player.square = board.squares[to_square_number]
+        player.square = board.squares[9]
         if hasattr(player.square, 'wormhole'):
             print("Square ", player.square.number, " has a wormhole")
-        print("Player ", player.p_id, " is at square: ", player.square.number)
+            wormhole_number = player.square.wormhole
+            if player.square.number > wormhole_number:
+                print("Oh oh *Snake noise*")
+            else:
+                print("Yahoooo (Super Mario 64-style) *Climbing noise*")
+            print("You moved from ", player.square.number)
+            player.square = board.squares[wormhole_number-1]
+            print("to ", player.square.number, " because of wormhole")
+        print("Player ", player.p_id, " is now at square: ", player.square.number)
 
 main()
 
