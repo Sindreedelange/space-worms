@@ -1,7 +1,8 @@
 from src.controller.BoardController import BoardController
 from src.utils.BoardFactory import BoardFactory
+from src.utils.PlayerFactory import PlayerFactory
+from src.controller.PlayerController import PlayerController
 from src.model.Player import Player
-from src.utils.Dice import Dice
 
 
 def main():
@@ -14,13 +15,13 @@ def main():
     for square in board.squares:
         print("Main method: ", square.number)
 
-    player_1 = Player('1', board.squares[board.start_square_number])
-    print("Player 1 is at square: ", player_1.square.number)
-    roll = Dice.roll()
-    print("Rolled ", roll)
-    move_to_square = board.squares[roll+1]
-    player_1.square = move_to_square
-    print("Player 1 is now at square: ", player_1.square.number)
+    start_square = board.squares[board.start_square_number-1]
+    players = PlayerFactory.initialize_players(2, start_square)
+    for player in players:
+        print("It is player ", player.p_id, "'s turn")
+        to_square_number = PlayerController.player_roll(player)
+        player.square = board.squares[to_square_number]
+        print("Player ", player.p_id, " is at square: ", player.square.number)
 
 main()
 
