@@ -89,3 +89,11 @@ class GameView:
     @staticmethod
     def end_round():
         print("Sorry, round limit exceeded \n Terminating")
+
+    @staticmethod
+    def try_access_illegal_square(illegal_square):
+        print("Tried to access square ", illegal_square)
+
+    @staticmethod
+    def information_legal_square(legal_square_number):
+        print("But ended up at ", legal_square_number)
