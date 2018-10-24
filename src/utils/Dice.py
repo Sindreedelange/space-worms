@@ -8,5 +8,5 @@ class Dice(object):
         pass
 
     @staticmethod
-    def dice_roll():
+    def roll():
         return random.randint(1, 6)
