@@ -19,7 +19,11 @@ Implementing the game *Space Worms* - a version of *Snakes and Ladders*, using P
 
 ## Game rules
 If a player rolls the dice so that they would end up outside of the board, they start 
-from the end of the board, with remaining eyes on the dice left to move.  
+from the end of the board, with remaining eyes on the dice left to move. 
+
+## Known problems
+Because if problems with *import* it is not possible, or at least I have not been
+able to, run the program in terminal.  
 
 ## TODO
 - Refactor logic in Square
