@@ -48,7 +48,7 @@ class GameView:
     # ---------------------------------------------------------------------
     @staticmethod
     def player_pre_roll(player):
-        print("It is player ", player.p_id, "'s turn")
+        print("It's player ", player.p_id, "'s turn")
 
     @staticmethod
     def players_standing(players):
@@ -56,15 +56,24 @@ class GameView:
             print("Player ", player.p_id, " is currently at square ", player.square.number)
 
     @staticmethod
-    def wormhole_encounter(player, board):
+    def wormhole_encounter(player):
             print("Square ", player.square.number, " has a wormhole")
-            wormhole_number = player.square.wormhole
-            if player.square.number > wormhole_number:
-                print("Oh oh *Snake noise*")
-            else:
-                print("Yaho (Super Mario 64-style) *Climbing noise*")
-            print("You moved from ", player.square.number)
-            player.square = board.squares[wormhole_number-1]
-            print("to ", player.square.number, " because of wormhole")
-            print("Player ", player.p_id, " is now at square: ", player.square.number)
+
     # ---------------------------------------------------------------------
+
+    # Other
+    @staticmethod
+    def setting_up_game():
+        print("Currently setting up game, please wait")
+
+    @staticmethod
+    def done_setting_up_game(game):
+        print("Ready to play game with ", len(game.players), " number of players, on board ", game.board.name)
+
+    @staticmethod
+    def snake():
+        print("Oh oh *Snake noise*")
+
+    @staticmethod
+    def ladder():
+        print("Yaho (Super Mario 64-style) *Climbing noise*")
